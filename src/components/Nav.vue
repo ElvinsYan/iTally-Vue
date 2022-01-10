@@ -15,7 +15,6 @@
 
 <script lang="ts">
 
-
 // eslint-disable-next-line no-undef
 let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
 try {
