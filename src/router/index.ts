@@ -1,12 +1,12 @@
 import Vue from 'vue';
-import VueRouter, {RouteConfig} from 'vue-router';
+import VueRouter from 'vue-router';
 import Money from '@/views/Money.vue';
 import Labels from '@/views/Labels.vue';
 import Statistics from '@/views/Statistics.vue';
 
 Vue.use(VueRouter);
 
-const routes: Array<RouteConfig> = [
+const routes = [
   {
     path: '/',
     redirect: '/money'
@@ -16,11 +16,11 @@ const routes: Array<RouteConfig> = [
     component: Money
   },
   {
-    path: 'labels',
+    path: '/labels',
     component: Labels
   },
   {
-    path: 'statistics',
+    path: '/statistics',
     component: Statistics
   }
 ];
