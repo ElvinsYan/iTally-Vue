@@ -4,16 +4,17 @@ const localStorageKeyName = 'recordList';
 
 const recordListModel = {
   data: [] as RecordItem[],
-  create(record: RecordItem) {
+  create(record: RecordItem): void {
     const record2: RecordItem = clone(record);
     record2.createdAt = new Date();
     this.data.push(record2);
+    this.save();
   },
-  fetch() {
+  fetch(): RecordItem[] {
     this.data = JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]');
     return this.data;
   },
-  save() {
+  save(): void {
     window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.data));
   }
 };
