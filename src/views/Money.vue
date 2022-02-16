@@ -8,7 +8,7 @@
                 @update:value="onUpdateNotes"
       />
     </div>
-    <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
+    <Tags/>
   </Layout>
 </template>
 
@@ -19,15 +19,16 @@ import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
 import FormItem from '@/components/Money/FormItem.vue';
 import Tags from '@/components/Money/Tags.vue';
-import store from '@/store/index2';
 
 @Component({
-  components: {Tags, FormItem, Types, NumberPad}
+  components: {Tags, FormItem, Types, NumberPad},
+  computed: {
+    recordList() {
+      return this.$store.state.recordList;
+    }
+  }
 })
 export default class Money extends Vue {
-  tags = store.tagList;
-  recordList = store.recordList;
-
   record: RecordItem = {
     tags: [],
     notes: '',
@@ -35,8 +36,8 @@ export default class Money extends Vue {
     amount: 0
   };
 
-  onUpdateTags(value: string[]): void {
-    this.record.tags = value;
+  created() {
+    this.$store.commit('fetchRecords');
   }
 
   onUpdateNotes(value: string): void {
@@ -45,7 +46,7 @@ export default class Money extends Vue {
   }
 
   saveRecord(): void {
-    store.createRecord(this.record);
+    this.$store.commit('createRecord', this.record);
   }
 
 }
