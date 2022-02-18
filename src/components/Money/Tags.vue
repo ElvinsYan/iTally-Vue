@@ -19,13 +19,16 @@ import {Component} from 'vue-property-decorator';
 @Component({
   computed: {
     tagList() {
-      //return this.$store.fetchTags();
-      return [];
+      return this.$store.state.tagList;
     }
   }
 })
 export default class Tags extends Vue {
   selectedTags: string[] = [];
+
+  created() {
+    this.$store.commit('fetchTags');
+  }
 
   toggle(tag: string): void {
     const index = this.selectedTags.indexOf(tag);
@@ -40,8 +43,7 @@ export default class Tags extends Vue {
   create(): void {
     const name = window.prompt('请输入标签');
     if (!name) {return;}
-    //TODO
-    //this.$store.createTag(name);
+    this.$store.commit('createTag', name);
 
   }
 }
@@ -67,7 +69,7 @@ export default class Tags extends Vue {
       line-height: 24px;
       border-radius: 12px;
       padding: 0 18px;
-      margin-right: 24px;
+      margin-right: 12px;
       margin-top: 8px;
 
       &.selected {
