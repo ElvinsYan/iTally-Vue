@@ -28,7 +28,11 @@ import {TagHelper} from '@/mixins/tagHelper';
     }
   }
 })
-export default class Labels extends mixins(TagHelper) {}
+export default class Labels extends mixins(TagHelper) {
+  beforeCreate() {
+    this.$store.commit('fetchTags');
+  }
+}
 </script>
 
 <style lang="scss" scoped>
