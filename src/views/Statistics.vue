@@ -15,6 +15,7 @@ import Tabs from '@/components/Tabs.vue';
 @Component({
   components: {Tabs, Types}
 })
+
 export default class Statistics extends Vue {
   type = '-';
   interval = 'day';
