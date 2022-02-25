@@ -3,7 +3,7 @@
     <Tabs class-prefix="type" :data-source="typeList" :value.sync="type"/>
     <Tabs class-prefix="interval" :data-source="intervalList" :value.sync="interval"/>
     <ol>
-      <li v-for="(group,index) in result" :key="index">
+      <li v-for="group in result" :key="group.title">
         <h3 class="title">{{ group.title }}</h3>
         <ol>
           <li v-for="item in group.items" :key="item.id"
