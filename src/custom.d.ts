@@ -5,7 +5,7 @@ type RootState = {
 }
 
 type RecordItem = {
-  tags: string[],
+  tags: Tag[],
   notes: string,
   type: string,
   amount: number,
@@ -16,6 +16,7 @@ type Tag = {
   id: string
   name: string
 }
+
 type TagListModel = {
   data: Tag[]
   fetch: () => Tag[]
